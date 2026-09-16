@@ -8,24 +8,8 @@ datasource db {
 }
 
 model Diyetisyen {
-  id         String    @id @default(uuid())
-  slug       String    @unique
-  adSoyad    String
-  unvan      String
-  biyo       String?
-  avatarUrl  String?
-  createdAt  DateTime  @default(now())
-  randevular Randevu[]
-}
-
-model Randevu {
-  id           String     @id @default(uuid())
-  danisanAd    String
-  danisanEmail String
-  telefon      String
-  tarih        DateTime
-  notlar       String?
-  diyetisyenId String
-  diyetisyen   Diyetisyen @relation(fields: [diyetisyenId], references: [id])
-  createdAt    DateTime   @default(now())
+  id        String   @id @default(uuid())
+  email     String   @unique
+  sifre     String
+  createdAt DateTime @default(now())
 }
