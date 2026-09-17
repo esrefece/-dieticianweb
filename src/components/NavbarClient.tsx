@@ -11,7 +11,8 @@ import { logoutAction } from '@/actions/authActions';
 interface User {
   id: string;
   email: string;
-  adSoyad: string;
+  ad: string;
+  soyad: string;
   unvan: string | null;
   avatarUrl: string | null;
 }
@@ -19,10 +20,15 @@ interface User {
 interface NavbarClientProps {
   user: User | null;
   isAdmin: boolean;
+  profile: {
+    ad: string;
+    soyad: string;
+  } | null;
 }
 
-export default function NavbarClient({ user, isAdmin }: NavbarClientProps) {
+export default function NavbarClient({ user, isAdmin, profile }: NavbarClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const fullName = `${profile?.ad || 'admin'} ${profile?.soyad || 'admin'}`;
 
   const handleLogout = async () => {
     await logoutAction();
@@ -39,15 +45,10 @@ export default function NavbarClient({ user, isAdmin }: NavbarClientProps) {
                 <Calendar className="h-5 w-5" />
               </div>
               <div>
-                {user ? (
-                  <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">
-                    {user.adSoyad || 'Admin'}
-                  </span>
-                ) : (
-                  <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">
-                    Uzman Diyetisyen
-                  </span>
-                )}
+                <h3 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">
+                  Uzman Diyetisyen
+                </h3>
+                <p className="text-xs text-emerald-600 -mt-1">{fullName}</p>
               </div>
             </Link>
             
@@ -75,7 +76,7 @@ export default function NavbarClient({ user, isAdmin }: NavbarClientProps) {
                 <div className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-emerald-50 rounded-lg border border-emerald-200">
                   <User className="h-4 w-4 text-emerald-600" />
                   <span className="text-sm font-medium text-emerald-800">
-                    {user.adSoyad || 'Admin'}
+                    {fullName}
                   </span>
                   {isAdmin && (
                     <Link href="/admin" className="flex items-center space-x-1 ml-2 px-2 py-1 bg-amber-100 rounded-full border border-amber-300 hover:bg-amber-200 transition-colors cursor-pointer">
@@ -149,7 +150,7 @@ export default function NavbarClient({ user, isAdmin }: NavbarClientProps) {
                 <div className="flex items-center space-x-2 mb-2">
                   <User className="h-4 w-4 text-emerald-600" />
                   <span className="text-sm font-medium text-emerald-800">
-                    {user.adSoyad || 'Admin'}
+                    {fullName}
                   </span>
                 </div>
                 {isAdmin && (

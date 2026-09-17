@@ -5,6 +5,7 @@ import { db } from '@/lib/db';
 
 export default async function Footer() {
   const diyetisyen = await db.diyetisyen.findFirst();
+  const fullName = `${diyetisyen?.ad || 'admin'} ${diyetisyen?.soyad || 'admin'}`;
 
   return (
     <footer className="border-t border-emerald-100 bg-gradient-to-br from-emerald-50 to-white">
@@ -20,7 +21,7 @@ export default async function Footer() {
                 <h3 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">
                   Uzman Diyetisyen
                 </h3>
-                 <p className="text-sm text-emerald-600">{diyetisyen?.unvan || 'Admin'}</p>
+                <p className="text-sm text-emerald-600">{fullName}</p>
               </div>
             </div>
             <p className="text-slate-600 leading-relaxed">
@@ -96,7 +97,7 @@ export default async function Footer() {
           <div className="flex flex-col justify-center">
             <div className="pt-6 border-t border-emerald-200">
               <p className="text-slate-600 flex items-center">
-                © {new Date().getFullYear()} {diyetisyen?.adSoyad || 'Admin'}
+                © {new Date().getFullYear()} {fullName}
               </p>
               <p className="text-sm text-slate-500 mt-2 flex items-center">
                 Made with <Heart className="h-4 w-4 text-red-500 mx-1 fill-red-500" /> for healthy living

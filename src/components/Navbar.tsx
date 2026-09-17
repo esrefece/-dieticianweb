@@ -9,6 +9,12 @@ import NavbarClient from './NavbarClient';
 
 export default async function Navbar() {
   const session = await verifySession();
+  const profile = await db.diyetisyen.findFirst({
+    select: {
+      ad: true,
+      soyad: true,
+    },
+  });
   let user = null;
   let isAdmin = false;
 
@@ -18,7 +24,8 @@ export default async function Navbar() {
       select: {
         id: true,
         email: true,
-        adSoyad: true,
+        ad: true,
+        soyad: true,
         unvan: true,
         avatarUrl: true,
       },
@@ -26,5 +33,5 @@ export default async function Navbar() {
     isAdmin = !!user;
   }
 
-  return <NavbarClient user={user} isAdmin={isAdmin} />;
+  return <NavbarClient user={user} isAdmin={isAdmin} profile={profile} />;
 }
