@@ -60,7 +60,7 @@ export default function NavbarClient({ user, isAdmin, profile }: NavbarClientPro
                 Ana Sayfa
               </Link>
               <Link 
-                href="/calculators" 
+                href="/hesaplayicilar" 
                 className="px-4 py-2 rounded-lg text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all font-medium"
               >
                 Hesaplayıcılar
@@ -139,7 +139,7 @@ export default function NavbarClient({ user, isAdmin, profile }: NavbarClientPro
               Ana Sayfa
             </Link>
             <Link 
-              href="/calculators" 
+              href="/hesaplayicilar" 
               className="block px-4 py-3 rounded-lg text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >

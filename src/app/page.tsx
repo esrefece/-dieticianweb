@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
-import { Calculator, Droplets, Flame, Apple, TrendingUp, ShieldCheck } from 'lucide-react';
+import FeaturedCalculators from '@/components/calculators/FeaturedCalculators';
+import { Apple, TrendingUp, ShieldCheck } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -40,34 +41,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Calculation Tools Section */}
-      <section className="mx-auto max-w-7xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-900">Hesaplama Araçları</h2>
-          <p className="mt-4 text-slate-600">Sağlık verilerinizi hızlıca hesaplayın ve hedeflerinizi belirleyin</p>
-        </div>
-        <Card className="p-8 border-emerald-100">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <Link href="/calculators/bmi" className="group">
-              <Button variant="outline" className="h-40 w-full flex-col text-lg border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50 transition-all">
-                <Calculator className="h-10 w-10 mb-3 text-emerald-600 group-hover:scale-110 transition-transform" />
-                VKİ Hesapla
-              </Button>
-            </Link>
-            <Link href="/calculators/calorie" className="group">
-              <Button variant="outline" className="h-40 w-full flex-col text-lg border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50 transition-all">
-                <Flame className="h-10 w-10 mb-3 text-emerald-600 group-hover:scale-110 transition-transform" />
-                Kalori Hesapla
-              </Button>
-            </Link>
-            <Link href="/calculators/water" className="group">
-              <Button variant="outline" className="h-40 w-full flex-col text-lg border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50 transition-all">
-                <Droplets className="h-10 w-10 mb-3 text-emerald-600 group-hover:scale-110 transition-transform" />
-                Su İhtiyacı
+      <FeaturedCalculators />
+
+      <section className="mx-auto max-w-5xl">
+        <div className="rounded-3xl border border-emerald-100 bg-white p-6 shadow-xl shadow-emerald-100/40 sm:p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">Tam araç listesi</p>
+              <h2 className="mt-2 text-2xl font-bold text-slate-900">Tüm hesaplamaları tek sayfada görün</h2>
+            </div>
+            <Link href="/hesaplayicilar">
+              <Button variant="outline" className="border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:text-emerald-800">
+                Tüm Araçları Aç
               </Button>
             </Link>
           </div>
-        </Card>
+        </div>
       </section>
 
       {/* Features Section */}
