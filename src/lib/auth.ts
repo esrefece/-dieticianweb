@@ -1,7 +1,7 @@
+// Bu dosya JWT tabanlı oturum yönetimi için kullanılır.
+// Oturum oluşturma (createSession), oturum doğrulama (verifySession) ve oturum silme (deleteSession) fonksiyonlarını içerir.
 import { jwtVerify, SignJWT } from 'jose';
 import { cookies } from 'next/headers';
-
-//JWT üretilen page burası
 
 // Oturum bilgisini tarayicida tutacagimiz cookie anahtari.
 const SESSION_COOKIE_NAME = 'session';

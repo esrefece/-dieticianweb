@@ -1,5 +1,8 @@
 'use server';
 
+// Bu dosya login ve logout işlemleri için server action'ları içerir.
+// loginAction: E-posta ve şifre ile giriş yapar, başarılı olursa oturum açar.
+// logoutAction: Oturumu kapatır ve login sayfasına yönlendirir.
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 import { createSession, deleteSession } from '@/lib/auth';
@@ -35,9 +38,9 @@ export async function loginAction(_prevState: LoginState, formData: FormData): P
     return { error: 'E-posta veya sifre hatali.' };
   }
 
-  // Kimlik dogrulanirsa oturum acilir ve admin paneline yonlendirilir.
+  // Kimlik dogrulanirsa oturum acilir ve ana sayfaya yonlendirilir.
   await createSession(diyetisyen.id);
-  redirect('/admin');
+  redirect('/');
 }
 
 export async function logoutAction() {

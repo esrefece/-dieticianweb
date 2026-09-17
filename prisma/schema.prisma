@@ -11,5 +11,27 @@ model Diyetisyen {
   id        String   @id @default(uuid())
   email     String   @unique
   sifre     String
+  adSoyad   String   @default("Uzman Diyetisyen")
+  unvan     String?
+  biyo      String?
+  telefon   String?
+  instagram String?
+  adres     String?
+  avatarUrl String?
   createdAt DateTime @default(now())
+  blogs     Blog[]
+}
+
+model Blog {
+  id             String   @id @default(uuid())
+  slug           String   @unique
+  baslik         String
+  ozet           String
+  kapakResmi     String
+  icerik         String?
+  pdfUrl         String?
+  detayResimUrl  String?
+  createdAt      DateTime @default(now())
+  diyetisyenId   String
+  diyetisyen     Diyetisyen @relation(fields: [diyetisyenId], references: [id])
 }

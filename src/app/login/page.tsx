@@ -1,5 +1,7 @@
 'use client';
 
+// Bu sayfa diyetisyenlerin admin paneline giriş yapması için kullanılan login sayfasıdır.
+// E-posta ve şifre ile giriş yapar, başarılı olursa admin paneline yönlendirir.
 import { useActionState } from 'react';
 import { loginAction } from '@/actions/authActions';
 

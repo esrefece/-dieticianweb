@@ -1,3 +1,6 @@
+// Bu middleware admin ve login route'larını korur.
+// Giriş yapmamış kullanıcıları admin sayfasından login sayfasına yönlendirir.
+// Zaten giriş yapmış kullanıcıları login sayfasından admin sayfasına yönlendirir.
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
@@ -39,9 +42,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // Zaten giris yapmis kullanici login sayfasina gitmesin diye admin'e yonlendiririz.
+  // Zaten giris yapmis kullanici login sayfasina gitmesin diye ana sayfaya yonlendiririz.
   if (isLoginRoute && isAuthenticated) {
-    return NextResponse.redirect(new URL('/admin', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   return NextResponse.next();
